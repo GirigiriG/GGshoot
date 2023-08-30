@@ -25,7 +25,6 @@ function App() {
   
   return (
     <div>
-      {/* {renderModal()}; */}
       {isModalOpen && <Modal/>}
       <Navigation></Navigation>
       <div className="main">

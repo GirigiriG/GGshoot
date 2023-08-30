@@ -1,3 +1,4 @@
+
 import './modal.css';
 import {useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../../store/store';
@@ -11,7 +12,7 @@ export default function Modal() {
     return (
         <div className='modal' onClick={() => dispatch(toggle(isModalOpen))}>
             <div className='content'>
-                <img src={image} alt="" />
+                <img src={image} alt="" onClick={(event) => {event.stopPropagation()}}/>
             </div>
         </div>
     )
