@@ -10,7 +10,6 @@ import {useSelector, useDispatch } from 'react-redux'
 import { RootState } from './store/store';
 
 function App() {
-  // const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const isModalOpen = useSelector((state: RootState) => state.modalReducer.isVisible);
   const [MockdataFetch, setMockDataFetch] = useState<IData[]>([]);
   const dispatch = useDispatch();
