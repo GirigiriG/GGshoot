@@ -1,0 +1,24 @@
+.gallery {
+    margin-top: 1px;
+    max-width: 19.7%;
+    max-height: 100%;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+.gallery .top,
+.gallery .bottom {
+    width: 100%;
+    height: 50%;
+}
+
+.gallery img {
+    box-shadow: none;
+}
+
+.pieces  {
+    width: 100%;
+    height: 100%;  
+    background-color: #000;
+}

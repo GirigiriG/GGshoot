@@ -1,0 +1,28 @@
+.search  {
+    position: relative;
+}
+
+input {
+    width: 320px;
+    padding: .7rem;
+    border: 1px solid #0000004a;
+    border-radius: 4px;
+    outline: none;
+    color: #000000ad;
+    text-indent: 1.8rem;
+    font-weight: 500;
+    font-size: 18px;
+    box-shadow: 0 0 3px 2px #00000019;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+input:focus {
+    border: 1px solid #00000056;
+    box-shadow: 0 0 3px 4px #00000030;
+}
+
+.search .icon {
+    position: absolute;
+    left: 10px;
+    top: 12px;
+}
