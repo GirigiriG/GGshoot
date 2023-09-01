@@ -2,13 +2,15 @@ import { createSlice } from "@reduxjs/toolkit";
 import { PayloadAction } from "@reduxjs/toolkit";
 
 export interface modalState {
-    imageURL: string,
+    imageURL: string
     isVisible: boolean
+    searchValue: string
 }
 
 const initialState: modalState = {
     imageURL: '',
     isVisible: false,
+    searchValue: '',
 }
 
 export const modalSlice = createSlice({
@@ -20,12 +22,14 @@ export const modalSlice = createSlice({
         },
 
         toggle: (state, action: PayloadAction<boolean>) => {
-            console.log(action.payload);
-            
             state.isVisible = !action.payload
+        },
+
+        findImageByAuthor: (state, action: PayloadAction<string>) => {
+            state.searchValue = action.payload;
         },
     }
 });
 
-export const {setModalImage, toggle} = modalSlice.actions;
+export const {setModalImage, toggle, findImageByAuthor} = modalSlice.actions;
 export default modalSlice.reducer;

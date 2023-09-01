@@ -8,7 +8,7 @@ interface ICard {
     published: boolean
 }
 
-const Card = ({widthInPercentage, maxHeightPx ,children, published}: ICard) => {
+export default function Card({widthInPercentage, maxHeightPx ,children, published}: ICard) {
     return (
         
         <div className="card" style={
@@ -18,5 +18,3 @@ const Card = ({widthInPercentage, maxHeightPx ,children, published}: ICard) => {
         </div>
     )
 }
-
-export default Card;

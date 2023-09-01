@@ -1,7 +1,7 @@
 import Search from '../search/search.componentes';
 import './navigation.css'
 
-const Navigation = () => {
+export default function Navigation() {
     return (
         <div className='nav'>
             <h2>Gideon Girigiri</h2>
@@ -9,5 +9,3 @@ const Navigation = () => {
         </div>
     )
 }
-
-export default Navigation

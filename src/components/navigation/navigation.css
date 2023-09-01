@@ -9,3 +9,7 @@
     color: #000;
     font-family: cursive;
 }
+
+.nav h2 {
+    cursor: pointer;
+}

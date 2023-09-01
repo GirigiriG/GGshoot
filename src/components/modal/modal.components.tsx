@@ -11,8 +11,8 @@ export default function Modal() {
         
     return (
         <div className='modal' onClick={() => dispatch(toggle(isModalOpen))}>
-            <div className='content'>
-                <img src={image} alt="" onClick={(event) => {event.stopPropagation()}}/>
+            <div className='content' onClick={(event) => {event.stopPropagation()}}>
+                <img src={image} alt=""/>
             </div>
         </div>
     )
