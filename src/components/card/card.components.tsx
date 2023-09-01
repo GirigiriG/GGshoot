@@ -10,10 +10,7 @@ interface ICard {
 
 export default function Card({widthInPercentage, maxHeightPx ,children, published}: ICard) {
     return (
-        
-        <div className="card" style={
-            {width:`${widthInPercentage}%`, minHeight: `${maxHeightPx}px`, display: published ? 'block' : 'none'}
-        }>
+        <div className="card" style={{width:`${widthInPercentage}%`, minHeight: `${maxHeightPx}px`, display: published ? 'block' : 'none'}}>
             {children}
         </div>
     )

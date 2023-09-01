@@ -1,7 +1,7 @@
 import './search.css';
 import {FiSearch } from 'react-icons/fi' ;
 import { useDispatch } from 'react-redux'
-import { findImageByAuthor } from '../../store/modal-slice';
+import { findImageByAuthor } from '../../store/global-state';
 
 export default function Search() {
     const dispatch = useDispatch();
@@ -10,7 +10,7 @@ export default function Search() {
     }
     return (
         <div className='search'>
-            <FiSearch color="black" class="icon" size="18" weight="bold"/>
+            <FiSearch color="black" className="icon" size="18" weight="bold"/>
             <input 
                 type="text" 
                 placeholder="Search by photographer..." 

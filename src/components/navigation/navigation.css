@@ -7,9 +7,78 @@
     margin: 0 auto;
     margin-bottom: 25px;
     color: #000;
-    font-family: cursive;
+}
+
+.proflile {
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+    background-color: #ccc;
+    position: relative;
+}
+
+.proflile img {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.proflile .settings {
+    width: 170px;
+    padding: 1.3rem 1rem;
+    border: 1px solid #00000050;
+    box-shadow: 0 0 1px 2px #00000015;
+    position: absolute;
+    right: -.2rem;
+    z-index: 999;
+    cursor: unset;
+    border-radius: 5px;
+    font-size: .8rem;
+    top: 45px;
 }
 
 .nav h2 {
     cursor: pointer;
+    font-family: cursive;
 }
+
+.link,
+.link:hover {
+    color: #000;
+}
+
+
+.settings .link {
+    display: flex;
+    border-bottom: 1px solid #74747420;
+}
+
+
+
+.nav li {
+    list-style: none;
+    margin-top: 1.1rem;
+    padding-bottom: .6rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.settings .link:last-child {
+    border: none;
+    margin-top: 0;
+    padding-bottom: 0;
+
+}
+
+
+
+.settings .icon {
+    margin-right: 10px;
+}
+
+
+
+
