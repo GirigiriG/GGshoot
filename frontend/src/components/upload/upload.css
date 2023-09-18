@@ -1,0 +1,76 @@
+.upload {
+    width: 90%;
+    margin: 20px auto;
+}
+
+.upload h4 {
+    font-size: 13px;
+    display: inline-block;
+}
+
+.upload-icon {
+    display: inline-block;
+}
+
+.upload button {
+    background-color: #008be7;
+}
+.upload .photo {
+    width: 450px;
+    height: 200px;
+    margin: 20px auto;
+    box-shadow: 0 0 2px 3px #cccccc89;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 3px;
+    margin-bottom: 4rem;
+}
+
+.dragarea {
+    width: 100%;
+    height: 60%;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px dashed #ccc;
+}
+
+.dragarea,
+.dragarea > div,
+.upload h4,
+.upload-icon {
+    background-color: #ebebeb;
+}
+
+.photo .drop-area {
+    width: 98%;
+    height: 95%;
+    display: flex;
+    border-radius: 3px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.uploaded-images {
+    height: 500px;
+    display: flex;
+}
+
+.uploaded-images .image {
+    width: 250px;
+    height: 250px;
+    display: flex;
+}
+
+.uploaded-images .image img {
+    cursor: pointer;
+    margin: 1px;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}

@@ -1,0 +1,37 @@
+.analytics_table {
+    width: 90%;
+    margin: 0 auto; 
+    padding: 1%;
+}
+
+.analytics_table .header,
+.analytics_table .data {
+    display: flex; 
+    justify-content: space-between; 
+    font-size: 13px;
+    border-bottom: 1px solid #cccccc91;
+    border-left: 1px solid #cccccc91;
+}
+
+.analytics_table .header {
+    align-items: flex-end;
+    padding: .5rem;
+    font-weight: bold;
+    height: 25px;
+    border-top-left-radius: 5px;
+    border-top-left-radius: 5px;
+    border-top: 1px solid #cccccc91;
+    border-right: 1px solid #cccccc91;
+}
+
+.analytics_table .data { 
+    padding: .5rem;
+    border-left: 1px solid #cccccc91;
+    border-right: 1px solid #cccccc91;
+}
+.analytics_table .header> div,
+.analytics_table .data > div {
+    width: 23%;
+    height: 100%;
+    text-align: left;
+}

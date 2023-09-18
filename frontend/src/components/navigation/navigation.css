@@ -1,0 +1,34 @@
+.nav {
+    width: 93%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 0;
+    margin: 0 auto;
+    margin-bottom: 25px;
+    color: #000;
+}
+
+
+
+.nav h2 {
+    cursor: pointer;
+    font-family: cursive;
+}
+
+.link,
+.link:hover {
+    color: #000;
+}
+
+
+
+.nav li {
+    list-style: none;
+    margin-top: 1.1rem;
+    padding-bottom: .6rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+

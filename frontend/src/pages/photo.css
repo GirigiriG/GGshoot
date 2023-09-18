@@ -1,0 +1,12 @@
+.photos {
+    height: 100vh;
+}
+
+button {
+    color: #fff;
+    background-color: #1c006f;
+}
+
+img {
+    object-fit: cover;
+}
