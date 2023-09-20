@@ -8,7 +8,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 import Modal from '../modal/modal.components';
 
-
 export default function PhotoUploder() {
 
     const fetchData = useCallback(async () => {
@@ -71,15 +70,19 @@ export default function PhotoUploder() {
     }
 
     async function fetchDataFromBackend(files: FileList) {
-        const data = new FormData()
+        const form = new FormData()
 
         for (const file of files) {
-            data.append('images[]', file);
+            form.append('images[]', file);
         }
-        
+        form.append('metadata', JSON.stringify({
+            author: "Gideon",
+            published: true,
+        } as IData))
+
         fetch('http://localhost:8080/upload', {
             method: 'POST',
-            body: data
+            body: form
         })
         
     }
@@ -136,4 +139,3 @@ export default function PhotoUploder() {
         </div>
     )
 }
-

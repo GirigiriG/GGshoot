@@ -10,7 +10,7 @@ import (
 	"github.com/h2non/bimg"
 )
 
-func CompressSavedImage(path string) {
+func CompressSavedImage(path string) string {
 	log.Println(path)
 	buffer, err := bimg.Read(path)
 	if err != nil {
@@ -29,15 +29,17 @@ func CompressSavedImage(path string) {
 	}
 	fileName := strings.Split(path, "/")[2]
 
-	bimg.Write(fmt.Sprintf("./images/cmp_%s", fileName), processed)
+	absolutePath := fmt.Sprintf("./images/cmp_%s", fileName)
+	bimg.Write(absolutePath, processed)
 
+	return absolutePath
 }
 
 func CreateImageNameFromFile(file *multipart.FileHeader) string {
 	mine := file.Header.Get("Content-Type")
 	extention := strings.Split(mine, "/")[1]
 	filePath := "./images/"
-	fileName := uuid.NewString() + "." + extention
+	fileName := strings.ReplaceAll(uuid.NewString(), "-", "") + "." + extention
 
 	return filePath + fileName
 }
