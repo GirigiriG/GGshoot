@@ -2,7 +2,8 @@ package utils
 
 import (
 	"fmt"
-	"log"
+	_ "image/jpeg"
+	_ "image/png"
 	"mime/multipart"
 	"strings"
 
@@ -11,7 +12,6 @@ import (
 )
 
 func CompressSavedImage(path string) string {
-	log.Println(path)
 	buffer, err := bimg.Read(path)
 	if err != nil {
 		fmt.Println("FAILED TO READ FILE: " + err.Error())

@@ -1,16 +1,14 @@
 import { ReactNode } from 'react';
 import './card.css';
 
-interface ICard {
-    widthInPercentage: string
-    maxHeightPx: string
+interface IProps {
     children: ReactNode,
     published: boolean
 }
 
-export default function Card({widthInPercentage, maxHeightPx ,children, published}: ICard) {
+export default function Card({children, published}: IProps) {
     return (
-        <div className='card' style={{width:`${widthInPercentage}%`, minHeight: `${maxHeightPx}px`, display: published ? 'block' : 'none'}}>
+        <div className='card' style={{display: published ? 'block' : 'none'}}>
             {children}
         </div>
     )

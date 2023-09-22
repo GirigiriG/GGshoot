@@ -4,7 +4,7 @@ export interface IData {
     published: boolean
     width: string
     height: string
-    type: string
+    photoType: string
     images: string[]
 
 }
@@ -16,7 +16,7 @@ const mockData: IData[] = [
         published: true,
         width: '19.7',
         height: '463',
-        type: 'single',
+        photoType: 'single',
         images: [],
     },
     {
@@ -25,7 +25,7 @@ const mockData: IData[] = [
         published: true,
         width: '19.7',
         height: '463',
-        type: 'single',
+        photoType: 'single',
         images: [],
     },
     {
@@ -34,7 +34,7 @@ const mockData: IData[] = [
         published: true,
         width: '19.7',
         height: '463',
-        type: 'single',
+        photoType: 'single',
         images: [],
     },
     {
@@ -43,7 +43,7 @@ const mockData: IData[] = [
         published: true,
         width: '19.7',
         height: '463',
-        type: 'single',
+        photoType: 'single',
         images: [],
     },
     {
@@ -52,7 +52,7 @@ const mockData: IData[] = [
         published: true,
         width: '19.7',
         height: '463',
-        type: 'single',
+        photoType: 'single',
         images: [],
     },
     {
@@ -61,7 +61,7 @@ const mockData: IData[] = [
         published: true,
         width: '19.7',
         height: '463',
-        type: 'single',
+        photoType: 'single',
         images: [],
     },
     {
@@ -70,7 +70,7 @@ const mockData: IData[] = [
         published: true,
         width: '19.7',
         height: '463',
-        type: 'single',
+        photoType: 'single',
         images: [],
     },
     {
@@ -79,7 +79,7 @@ const mockData: IData[] = [
         published: true,
         width: '19.7',
         height: '463',
-        type: 'single',
+        photoType: 'single',
         images: [],
     },
     {
@@ -94,7 +94,7 @@ const mockData: IData[] = [
             "https://images.unsplash.com/photo-1692680887047-357bbef7b16f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2583&q=80",
             "https://images.unsplash.com/photo-1665088127661-83aeff6104c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80"
         ],
-        type: 'multiple',
+        photoType: 'multiple',
     },
         
 ]

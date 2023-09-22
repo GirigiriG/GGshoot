@@ -7,13 +7,13 @@ import { setModalImage, toggleMoal } from '../../store/global-state';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 import Modal from '../modal/modal.components';
+import { IPhotoModel } from '../../models/models';
 
 export default function PhotoUploder() {
-
     const fetchData = useCallback(async () => {
-        const data = await fetch("http://localhost:8080/")
-            const imageurl = await data.json()
-            setImage(imageurl.image);
+        // const data = await fetch("http://localhost:8080/")
+        // const imageurl = await data.json()
+        // setImage(imageurl.image);
     }, []);
 
     useEffect(() => {
@@ -47,7 +47,7 @@ export default function PhotoUploder() {
                     published: true,
                     width: '19.7',
                     height: '463',
-                    type: 'single',
+                    photoType: 'single',
                     images: [],
                 })
             }
@@ -76,9 +76,10 @@ export default function PhotoUploder() {
             form.append('images[]', file);
         }
         form.append('metadata', JSON.stringify({
-            author: "Gideon",
+            author: 'Gideon Girigiri',
+            photoType: 'single',
             published: true,
-        } as IData))
+        } as IPhotoModel))
 
         fetch('http://localhost:8080/upload', {
             method: 'POST',

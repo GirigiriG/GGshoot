@@ -6,7 +6,7 @@ export default function Navigation() {
     return (
         <div className='nav'>
             <Link to='/' className='link'>
-                <h2>Gideon Girigiri</h2>
+                <h2>GGshoot</h2>
             </Link> 
             <div style={{display: 'flex'}}>
                 <Search></Search>
