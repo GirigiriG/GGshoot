@@ -7,19 +7,33 @@ import (
 	"net/http"
 
 	"github.com/GirigiriG/GGshoot/backend/pkg/models"
+	"github.com/GirigiriG/GGshoot/backend/pkg/repository"
 	"github.com/GirigiriG/GGshoot/backend/pkg/services"
 	"github.com/GirigiriG/GGshoot/backend/pkg/utils"
 	"github.com/gin-gonic/gin"
 )
 
-func GetPhotosByUserID(c *gin.Context, srv *services.PhotoService) {
+var service *services.PhotoService
+
+// Set up servic
+func init() {
+	db := repository.NewDB()
+	repo := repository.NewPhotoRepository(db)
+	service = services.NewPhotoService(repo)
+}
+
+func HandleGetPhotosByUserID(c *gin.Context) {
+	fmt.Println("GOT HERE")
+}
+
+func GetPhotosByUserID(c *gin.Context) {
 	c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
 	ID, ok := c.Params.Get("id")
 	if !ok {
 		fmt.Println("id not found!")
 	}
 	ctx := context.Background()
-	photos, err := srv.GetPhotoById(ctx, ID)
+	photos, err := service.GetPhotoById(ctx, ID)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
 			"stauts":  http.StatusBadRequest,
@@ -35,7 +49,7 @@ func GetPhotosByUserID(c *gin.Context, srv *services.PhotoService) {
 	})
 }
 
-func Upload(c *gin.Context, srv *services.PhotoService) {
+func UploadImage(c *gin.Context) {
 	c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
 	metadata := models.NewPhoto()
 
@@ -50,7 +64,7 @@ func Upload(c *gin.Context, srv *services.PhotoService) {
 
 	services.CompressAndGenerateURL(c, files, metadata)
 
-	_, err := srv.CreateNewPhoto(c, metadata)
+	_, err := service.CreateNewPhoto(c, metadata)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
 			"stauts":  http.StatusBadRequest,

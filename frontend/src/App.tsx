@@ -2,7 +2,6 @@ import { Route, Routes } from  'react-router-dom'
 import './App.css';
 import Home from './pages/home.pages';
 import Settings from './pages/settings.pages';
-import Statistics from './components/analytics/analytics.components';
 import Photos from './pages/photo.pages';
 import { toggleProfileSettings } from './store/global-state';
 import { useSelector, useDispatch } from 'react-redux';
@@ -20,7 +19,7 @@ function App() {
   }
 
   return (
-      <div className='main-dom-root' onClick={() => hideProfileSetting() } >
+      <div className='main-dom-root' onClick={() => hideProfileSetting()} onKeyDown={(event: React.KeyboardEvent) => console.log(event.key)}>
         <Routes>
           <Route path='/' element={<Home />}/>
           <Route path='/photos' element={<Photos />}/>

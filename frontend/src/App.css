@@ -4,3 +4,7 @@
   background-color: #FFFFFF;
   color: #000;
 }
+
+.main-dom-root {
+  height: 100vh;
+}
