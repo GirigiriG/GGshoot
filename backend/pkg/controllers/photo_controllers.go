@@ -9,8 +9,7 @@ import (
 	"github.com/GirigiriG/GGshoot/backend/pkg/models"
 	"github.com/GirigiriG/GGshoot/backend/pkg/repository"
 	"github.com/GirigiriG/GGshoot/backend/pkg/services"
-	"github.com/GirigiriG/GGshoot/backend/pkg/utils"
-	"github.com/gin-gonic/gin"
+	"github.com/gorilla/mux"
 )
 
 var service *services.PhotoService
@@ -22,63 +21,50 @@ func init() {
 	service = services.NewPhotoService(repo)
 }
 
-func HandleGetPhotosByUserID(c *gin.Context) {
-	fmt.Println("GOT HERE")
-}
+func GetPhotosByUserID(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-type", "application/json")
 
-func GetPhotosByUserID(c *gin.Context) {
-	c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
-	ID, ok := c.Params.Get("id")
+	params := mux.Vars(r)
+
+	ID, ok := params["id"]
+
 	if !ok {
 		fmt.Println("id not found!")
 	}
 	ctx := context.Background()
 	photos, err := service.GetPhotoById(ctx, ID)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{
-			"stauts":  http.StatusBadRequest,
-			"message": err.Error(),
-			"body":    "",
-		})
+		json.NewEncoder(w).Encode("Error")
 	}
 
-	c.JSON(http.StatusOK, gin.H{
-		"status":  http.StatusOK,
-		"message": "success",
-		"body":    photos,
+	if err != nil {
+		json.NewEncoder(w).Encode(
+			models.ResponseWrapper{
+				Status:  http.StatusInternalServerError,
+				Message: "Something went wrong",
+				Body:    photos,
+			},
+		)
+	}
+
+	w.WriteHeader(http.StatusOK)
+	json.NewEncoder(w).Encode(models.ResponseWrapper{
+		Status:  http.StatusOK,
+		Message: "OK",
+		Body:    photos,
 	})
 }
 
-func UploadImage(c *gin.Context) {
-	c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
+func UploadImage(w http.ResponseWriter, r *http.Request) {
 	metadata := models.NewPhoto()
+	_, fileHandler, _ := r.FormFile("images[]")
+	userData := r.FormValue("metadata")
 
-	form, _ := c.MultipartForm()
-	files := form.File["images[]"]
+	services.CompressAndGenerateURL(fileHandler, metadata)
+	parsePhotoMetaData(userData, metadata)
 
-	for _, JSONresult := range form.Value["metadata"] {
-		if utils.IsJSON(JSONresult) {
-			metadata = parsePhotoMetaData(JSONresult, metadata)
-		}
-	}
-
-	services.CompressAndGenerateURL(c, files, metadata)
-
-	_, err := service.CreateNewPhoto(c, metadata)
-	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{
-			"stauts":  http.StatusBadRequest,
-			"message": err.Error(),
-			"body":    "",
-		})
-		return
-	}
-
-	c.JSON(http.StatusOK, gin.H{
-		"stauts":  http.StatusOK,
-		"message": err,
-		"body":    metadata,
-	})
+	ctx := context.Background()
+	service.CreateNewPhoto(ctx, metadata)
 }
 
 func parsePhotoMetaData(data string, dst *models.Photo) *models.Photo {

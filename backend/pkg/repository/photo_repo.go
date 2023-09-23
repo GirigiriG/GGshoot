@@ -28,7 +28,6 @@ func (repo *PhotoRepository) GetPhotosByUserId(ID string) ([]models.Photo, error
 
 	ctx, cancelFunc := context.WithTimeout(context.Background(), time.Second*3)
 	defer cancelFunc()
-
 	query := `SELECT 
 				id, 
 				high_resolution_url, 
@@ -101,6 +100,7 @@ func (repo *PhotoRepository) CreateNewPhoto(metadata *models.Photo) (bool, error
 		metadata.CreatedAt,
 		metadata.UpdatedAt,
 	)
+
 	if err != nil {
 		fmt.Println("error occured while creating &record: ", err.Error())
 		return false, fmt.Errorf("error creating record")

@@ -19,7 +19,7 @@ function App() {
   }
 
   return (
-      <div className='main-dom-root' onClick={() => hideProfileSetting()} onKeyDown={(event: React.KeyboardEvent) => console.log(event.key)}>
+      <div className='main-dom-root' onClick={() => hideProfileSetting()}>
         <Routes>
           <Route path='/' element={<Home />}/>
           <Route path='/photos' element={<Photos />}/>

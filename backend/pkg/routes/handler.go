@@ -1,15 +1,24 @@
 package routes
 
 import (
+	"net/http"
+
 	"github.com/GirigiriG/GGshoot/backend/pkg/controllers"
-	"github.com/GirigiriG/GGshoot/backend/pkg/middleware"
-	"github.com/gin-gonic/gin"
+	"github.com/gorilla/mux"
+	"github.com/rs/cors"
 )
 
-func GinMuxRouteHandler() *gin.Engine {
-	router := gin.Default()
-	router.POST("/upload", controllers.UploadImage)
-	router.GET("/jwt", middleware.HandlValidation, controllers.HandleGetPhotosByUserID)
-	router.GET("/photos/:id", controllers.GetPhotosByUserID)
+func MuxRouteHandler() http.Handler {
+	mux := mux.NewRouter()
+	
+	mux.HandleFunc("/photos/{id}", controllers.GetPhotosByUserID).Methods(http.MethodGet)
+	mux.HandleFunc("/upload", controllers.UploadImage).Methods(http.MethodPost)
+
+	cors := cors.New(cors.Options{
+		AllowedOrigins:   []string{"*"},
+		AllowCredentials: true,
+	})
+
+	router := cors.Handler(mux)
 	return router
 }

@@ -4,12 +4,14 @@ go 1.21.1
 
 require (
 	github.com/gin-gonic/gin v1.9.1
+	github.com/golang-jwt/jwt/v4 v4.4.3
 	github.com/google/uuid v1.3.1
+	github.com/gorilla/mux v1.8.0
 	github.com/h2non/bimg v1.1.9
+	github.com/rs/cors v1.10.0
 )
 
 require (
-	github.com/golang-jwt/jwt/v5 v5.0.0 // indirect
 	github.com/google/go-cmp v0.5.8 // indirect
 	github.com/jmespath/go-jmespath v0.4.0 // indirect
 	github.com/kr/pretty v0.3.0 // indirect
@@ -30,7 +32,6 @@ require (
 	github.com/go-playground/validator/v10 v10.15.4 // indirect
 	github.com/go-sql-driver/mysql v1.7.1
 	github.com/goccy/go-json v0.10.2 // indirect
-	github.com/golang-jwt/jwt/v4 v4.5.0
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/klauspost/cpuid/v2 v2.2.5 // indirect
 	github.com/leodido/go-urn v1.2.4 // indirect

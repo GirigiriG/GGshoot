@@ -10,22 +10,20 @@ import (
 	"github.com/GirigiriG/GGshoot/backend/pkg/models"
 	"github.com/GirigiriG/GGshoot/backend/pkg/storage"
 	"github.com/GirigiriG/GGshoot/backend/pkg/utils"
-	"github.com/gin-gonic/gin"
 )
 
-func CompressAndGenerateURL(ctx *gin.Context, files []*multipart.FileHeader, metadata *models.Photo) {
+func CompressAndGenerateURL(image *multipart.FileHeader, metadata *models.Photo) {
 	bucket := storage.NewStorage()
 
-	for _, file := range files {
-		highResolutionPath := utils.CreateImageNameFromFile(file)
-		ctx.SaveUploadedFile(file, highResolutionPath)
-		lowResolutionPath := utils.CompressSavedImage(highResolutionPath)
+	highResolutionPath := utils.CreateImageNameFromFile(image)
+	utils.SaveUploadedFile(image, highResolutionPath)
+	lowResolutionPath := utils.CompressSavedImage(highResolutionPath)
 
-		metadata.HighResolutionURL = bucket.UploadImage(highResolutionPath)
-		metadata.LowResolutionURL = bucket.UploadImage(lowResolutionPath)
+	metadata.HighResolutionURL = bucket.UploadImage(highResolutionPath)
+	metadata.LowResolutionURL = bucket.UploadImage(lowResolutionPath)
 
-		go deleteImageAfterS3upload(highResolutionPath, lowResolutionPath)
-	}
+	go deleteImageAfterS3upload(highResolutionPath, lowResolutionPath)
+
 }
 
 func deleteImageAfterS3upload(pathToImages ...string) {

@@ -20,6 +20,8 @@ export default function Home () {
       const controller = new AbortController();
       const response = await fetch("http://localhost:8080/photos/a019cd6b-2385-4f8e-98c5-539b58b93e76", {signal: controller.signal});
       const data = await response.json();
+      console.log(data);
+      
       const photos = (data.body as IPhotoModel[]);
 
       setImages(photos);

@@ -9,14 +9,14 @@ export default function Modal() {
     const dispatch = useDispatch();
     const image = useSelector((state: RootState) => state.modalReducer.imageURL);
     const isModalOpen = useSelector((state: RootState) => state.modalReducer.isModalVisible);
+    const ESCAPE_KEY = 'Escape';
     
-
     useEffect(() => {
         document.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape') {
+            if (event.key === ESCAPE_KEY) {
                 dispatch(toggleMoal(isModalOpen))
             }
-        } )
+        })
     }, [])
 
     return (
